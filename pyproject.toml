@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "lucid-kernels"
+version = "0.1.0"
+description = "LUCID forward substitution kernels for NVIDIA Hopper (SM90)"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.4",
+    "nvidia-cutlass-dsl>=4.4",
+    "quack-kernels>=0.2",
+    "cuda-python",
+]
+
+[project.optional-dependencies]
+fa3 = ["flash-attn>=2.7"]  # For FA3 baseline comparison
+
+[tool.setuptools.packages.find]
+include = ["lucid_kernels*"]
